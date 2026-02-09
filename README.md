@@ -9,16 +9,19 @@
 
 ## 1. Project Description
 
-This project goal is to **compare the effectiveness of linear and non-linear supervised learning models in predicting short-term ETF return direction.**.
+This project goal is to **compare the effectiveness of linear and non-linear supervised learning models in predicting short-term ETF return direction** for major U.S. equity ETFs (QQQ, SPY, and IWM). Predicting exact stock or ETF prices is highly noisy and unreliable in practice. In contrast, short-term directional prediction provides a more robust and more measurable objective.
 
 Given a stock’s historical daily data up to trading day *t* (open, high, low, close, volume), the task is to predict the **binary direction of the next-day return**:
 
-- **y_{t+1} = 1** if return from day *t* to *t+1* is positive  
-- **y_{t+1} = 0** otherwise  
+$$
+y_{t+1} = 
+\begin{cases}
+1, & \text{if the return from day } t \text{ to } t+1 \text{ is positive} \\
+0, & \text{otherwise}
+\end{cases}
+$$
 
-This is formulated as a binary classification problem, which is more robust than price regression and aligns with supervised learning.
-
-**Motivation:** Predicting exact prices is extremely noisy; directional prediction is a simpler, measurable goal. The project uses supervised learning on tabular data, allows comparison of linear vs. non-linear models, and emphasizes evaluation and methodology over financial claims. The goal is to evaluate whether historical price features provide predictive signal, not to beat the market.
+This problem is formulated as a binary classification task, which is more robust and interpretable than direct price regression and aligns well with supervised learning techniques.
 
 ---
 
