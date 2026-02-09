@@ -34,9 +34,6 @@ This problem is formulated as a binary classification task, which is more robust
 | **Evaluation** | Quantify predictive value via Accuracy, Precision, Recall, and ROC-AUC on a held-out test set. |
 | **Baselines** | Compare against random guessing (50%), always-positive, and minimal-feature logistic regression. |
 
-**Good (rubric-style):** “Successfully predict the direction of next-day stock return using open/high/low/close/volume and derived features, with clear baselines and metrics.”  
-**Scope:** Two months; individual project. All data processing, modeling, and analysis by the author.
-
 ---
 
 ## 3. Data Collection Plan
@@ -59,7 +56,7 @@ This problem is formulated as a binary classification task, which is more robust
 - **Non-linear:** Random Forest and/or Gradient Boosted Trees (e.g., scikit-learn, XGBoost).  
 - **Optional:** Simple feed-forward neural network.  
 
-Same feature sets and chronological train/validation/test splits for all models to ensure fair comparison and avoid look-ahead bias.
+Same feature sets and train/validation/test splits for all models to ensure fair comparison and avoid look-ahead bias.
 
 **Features (derived):** Daily and log returns, rolling moving averages (e.g., 5-day, 10-day), rolling volatility, momentum-style indicators.
 
