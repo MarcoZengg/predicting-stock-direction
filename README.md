@@ -102,7 +102,7 @@ Tableau or PowerBI is preffered. Another option is to make a website or publish 
 
 | Team Member       | Main Responsibilities                           |
 |-------------------|------------------------------------------------|
-| Xiankun Zeng        | ...   |
-| Teammate 2        | ...   |
-| Hoang Anh Vu        | ...      |
-| Teammate 4        | ...       |
+| Xiankun Zeng      | ...   |
+| Haoran Zhang      | ...   |
+| Hoang Anh Vu      | ...   |
+| Teammate 4        | ...   |
