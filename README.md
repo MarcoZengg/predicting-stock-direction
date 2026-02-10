@@ -89,5 +89,5 @@ This problem is formulated as a binary classification task, which is more robust
 |-------------------|------------------------------------------------|
 | Teammate 1        | ...   |
 | Teammate 2        | ...   |
-| Teammate 3        | ...      |
+| Hoang Anh Vu        | ...      |
 | Teammate 4        | ...       |
