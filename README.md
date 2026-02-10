@@ -61,7 +61,7 @@ Tableau or PowerBI is preffered. Another option is to make a website or publish 
 ---
 
 ## 6. Test Plan
-
+We'll statistically test if any model beats the 50% random-guess baseline to confirm predictive signal exists, then we'll use paired statistical tests (not just metric comparisons) to determine if non-linear models significantly outperform linear ones, after that we'll verify chronological splitting prevents look-ahead bias and test performance consistency across time windows. The identical feature set requirement means we'll also compare which features each model type finds important.
 
 ---
 
