@@ -80,8 +80,22 @@ This problem is formulated as a binary classification task, which is more robust
 **Balance Plan:** If project workload becomes unbalanced, adjust scope—reduce ETF count or date range if overextended, or add assets/features if under-scoped—to keep effort and timeline (~2 months) manageable and fair.
 
 ---
+## 8. Technical Stack
 
-## 8. Team Contributions
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Data Collection** | `yfinance` Python library | Fetch historical OHLCV data from Yahoo Finance |
+| **Data Processing** | `pandas`, `numpy` | Data manipulation, cleaning, and feature engineering |
+| **Machine Learning** | `scikit-learn` (v1.3+) | Model implementation (Logistic Regression, Random Forest, Gradient Boosting) |
+| **Feature Engineering** | `ta` (Technical Analysis library) | Calculate technical indicators (RSI, MACD, etc.) |
+| **Visualization** | `matplotlib`, `seaborn`, `plotly` | Create static and interactive visualizations |
+| **Version Control** | Git, GitHub | Code management and collaboration |
+| **Environment** | Python 3.9+, Jupyter Notebooks, VS Code | Development environment and reproducible analysis |
+| **Model Persistence** | `joblib` or `pickle` | Save trained models for evaluation |
+| **Documentation** | Markdown, Jupyter | Project documentation and reporting |
+
+---
+## 9. Team Contributions
 
 **Team size:** 4 members
 
