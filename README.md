@@ -49,12 +49,13 @@ This problem is formulated as a binary classification task, which is more robust
 ---
 
 ## 4. Modeling
-
+We can start from building logistic regression and linear regression to explore analytic methods, and find potential OVB, multicolinearity and Heteroskedasticity. Then we move on to advanced ML models like XGBoost, Decision Tree and Random Forest.
 
 
 ---
 
 ## 5. Visualization Plan
+Tableau or PowerBI is preffered. Another option is to make a website or publish the dataset to Kaggle.
 
 
 ---
