@@ -67,16 +67,16 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 
 ## 7. Project Schedule
 
-| Phase                    | Key Tasks                                                                                          |
-|--------------------------|----------------------------------------------------------------------------------------------------|
-| Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           |
-| Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |
-| Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       |
-| Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          |
-| Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     |
-| Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            |
-| Visualization            | Develop clear and unbiased visualizations to communicate results and insights.                      |
-| Finalization & Reporting | Summarize findings evenly, report results, and prepare all project documentation for submission.    |
+| Week      | Phase                    | Key Tasks                                                                                          | 
+|-----------|--------------------------|----------------------------------------------------------------------------------------------------|
+| Week 1    | Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           |
+| Week 2    | Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |
+| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       |
+| Week 4    | Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          |
+| Week 5    | Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     |
+| Week 6    | Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            |
+| Week 7    | Visualization            | Develop clear and unbiased visualizations to communicate results and insights.                      |
+| Week 8    | Finalization & Reporting | Summarize findings evenly, report results, and prepare all project documentation for submission.    |
 
 **Balance Plan:** If project workload becomes unbalanced, adjust scope—reduce ETF count or date range if overextended, or add assets/features if under-scoped—to keep effort and timeline (~2 months) manageable and fair.
 
