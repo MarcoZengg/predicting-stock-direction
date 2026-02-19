@@ -106,3 +106,7 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 | Haoran Zhang      | ...   |
 | Hoang Anh Vu      | Data Processing   |
 | Teammate 4        | ...   |
+
+## 10. Instructions
+
+See [INSTRUCTION.md](INSTRUCTION.md) for getting started.
