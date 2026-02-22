@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-# ====== Get project root ======
+# get project root
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 
@@ -23,7 +23,7 @@ for TICKER in TICKERS:
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.sort_values("Date")
 
-    # ====== Feature Engineering ======
+    # feature Engineering 
     df["return"] = df["Close"].pct_change()
     df["label"] = (df["return"].shift(-1) > 0).astype(int)
 
@@ -33,7 +33,7 @@ for TICKER in TICKERS:
 
     df = df.dropna().reset_index(drop=True)
 
-    # ====== Save full dataset ======
+    # Save full dataset
     processed_path = os.path.join(PROCESSED_DIR, f"{TICKER}_processed.csv")
     df.to_csv(processed_path, index=False)
 
@@ -41,7 +41,7 @@ for TICKER in TICKERS:
     print("Label distribution:")
     print(df["label"].value_counts(normalize=True))
 
-    # ====== Time Split ======
+    # Time split
     train_size = int(len(df) * 0.8)
 
     train = df.iloc[:train_size]
