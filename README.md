@@ -74,7 +74,7 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 |-----------|--------------------------|----------------------------------------------------------------------------------------------------|--------|
 | Week 1    | Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           | 🟢     |
 | Week 2    | Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |  🟡    |
-| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       | 🔴     |
+| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       | 🟢     |
 | Week 4    | Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          | 🔴     |
 | Week 5    | Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     | 🔴     |
 | Week 6    | Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            | 🔴     |
