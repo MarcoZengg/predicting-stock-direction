@@ -1,6 +1,6 @@
 # Predict Stock Direction With Supervised Learning
 
-**Latest:** Last updated: 2026-02-19. Recent: linked [INSTRUCTION.md](INSTRUCTION.md), updated project schedule. 
+**Latest:** Last updated: 2026-03-11. Recent: linked [INSTRUCTION.md](INSTRUCTION.md), updated project schedule, Week 3 (Data Processing) marked complete.
 > **Note:** For latest changes and important updates, see the top of this README.
 
 ## CS 506 Project Proposal
