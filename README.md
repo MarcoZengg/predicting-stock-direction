@@ -1,5 +1,8 @@
 # Predict Stock Direction With Supervised Learning
 
+**Latest:** Last updated: 2026-02-19. Recent: linked [INSTRUCTION.md](INSTRUCTION.md), updated project schedule. 
+> **Note:** For latest changes and important updates, see the top of this README.
+
 ## CS 506 Project Proposal
 
 **Course:** [BU CS 506](https://gallettilance.github.io/final_project/)  
@@ -49,45 +52,64 @@ This problem is formulated as a binary classification task, which is more robust
 ---
 
 ## 4. Modeling
-
+We can start from building logistic regression and linear regression to explore analytic methods, and find potential OVB, multicolinearity and Heteroskedasticity. Then we move on to advanced ML models like XGBoost, Decision Tree and Random Forest.
 
 
 ---
 
 ## 5. Visualization Plan
+Tableau or PowerBI is preffered. Another option is to make a website or publish the dataset to Kaggle.
 
 
 ---
 
 ## 6. Test Plan
-
+We'll statistically test if any model beats the 50% random-guess baseline to confirm predictive signal exists, then we'll use paired statistical tests (not just metric comparisons) to determine if non-linear models significantly outperform linear ones, after that we'll verify chronological splitting prevents look-ahead bias and test performance consistency across time windows. The identical feature set requirement means we'll also compare which features each model type finds important.
 
 ---
 
 ## 7. Project Schedule
 
-| Phase                    | Key Tasks                                                                                          |
-|--------------------------|----------------------------------------------------------------------------------------------------|
-| Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           |
-| Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |
-| Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       |
-| Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          |
-| Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     |
-| Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            |
-| Visualization            | Develop clear and unbiased visualizations to communicate results and insights.                      |
-| Finalization & Reporting | Summarize findings evenly, report results, and prepare all project documentation for submission.    |
+| Week      | Phase                    | Key Tasks                                                                                          | Status |
+|-----------|--------------------------|----------------------------------------------------------------------------------------------------|--------|
+| Week 1    | Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           | 🟢     |
+| Week 2    | Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |  🟡    |
+| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       | 🔴     |
+| Week 4    | Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          | 🔴     |
+| Week 5    | Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     | 🔴     |
+| Week 6    | Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            | 🔴     |
+| Week 7    | Visualization            | Develop clear and unbiased visualizations to communicate results and insights.                      | 🔴     |
+| Week 8    | Finalization & Reporting | Summarize findings evenly, report results, and prepare all project documentation for submission.    | 🔴     |
 
 **Balance Plan:** If project workload becomes unbalanced, adjust scope—reduce ETF count or date range if overextended, or add assets/features if under-scoped—to keep effort and timeline (~2 months) manageable and fair.
 
 ---
+## 8. Technical Stack
 
-## 8. Team Contributions
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Data Collection** | `yfinance` Python library | Fetch historical OHLCV data from Yahoo Finance |
+| **Data Processing** | `pandas`, `numpy` | Data manipulation, cleaning, and feature engineering |
+| **Machine Learning** | `scikit-learn` (v1.3+) | Model implementation (Logistic Regression, Random Forest, Gradient Boosting) |
+| **Feature Engineering** | `ta` (Technical Analysis library) | Calculate technical indicators (RSI, MACD, etc.) |
+| **Visualization** | `matplotlib`, `seaborn`, `plotly` | Create static and interactive visualizations |
+| **Version Control** | Git, GitHub | Code management and collaboration |
+| **Environment** | Python 3.9+, Jupyter Notebooks, VS Code | Development environment and reproducible analysis |
+| **Model Persistence** | `joblib` or `pickle` | Save trained models for evaluation |
+| **Documentation** | Markdown, Jupyter | Project documentation and reporting |
+
+---
+## 9. Team Contributions
 
 **Team size:** 4 members
 
 | Team Member       | Main Responsibilities                           |
 |-------------------|------------------------------------------------|
-| Teammate 1        | ...   |
-| Teammate 2        | ...   |
-| Teammate 3        | ...      |
-| Teammate 4        | ...       |
+| Xiankun Zeng      | ...   |
+| Haoran Zhang      | ...   |
+| Hoang Anh Vu      | Data Processing   |
+| Teammate 4        | ...   |
+
+## 10. Instructions
+
+See [INSTRUCTION.md](INSTRUCTION.md) for getting started.
