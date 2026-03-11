@@ -105,7 +105,7 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 
 | Team Member       | Main Responsibilities                           |
 |-------------------|------------------------------------------------|
-| Xiankun Zeng      | ...   |
+| Xiankun Zeng      | Data Acquisition   |
 | Haoran Zhang      | ...   |
 | Hoang Anh Vu      | Data Processing   |
 | Teammate 4        | ...   |
