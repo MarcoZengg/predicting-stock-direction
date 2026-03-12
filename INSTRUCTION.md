@@ -31,3 +31,28 @@
    - `data/raw/IWM_historical.csv`
 
    Each file contains Open, High, Low, Close, and Volume for approximately 4,000 trading days.
+
+### How to Process Data
+
+Run this **after** you have raw data in `data/raw/` (see *How to Download Data* above).
+
+1. **Install dependencies** (if not already installed)
+
+   ```bash
+   pip install pandas
+   ```
+
+2. **Run the process script** from the project root
+
+   ```bash
+   python scripts/process_data.py
+   ```
+
+3. **Verify output**
+
+   The script reads each `data/raw/{TICKER}_historical.csv`, cleans and standardizes the data, adds features (returns, momentum, moving averages, volatility, volume features), and builds the next-day direction label. It then saves:
+
+   - **Full processed dataset** (per ticker): `data/processed/QQQ_processed.csv`, `SPY_processed.csv`, `IWM_processed.csv`
+   - **Train/test split** (80% / 20% by time): `data/processed/{TICKER}_train.csv` and `data/processed/{TICKER}_test.csv`
+
+   Rows with missing values (e.g. from rolling windows) are dropped. Use the `*_train.csv` and `*_test.csv` files for model training and evaluation.

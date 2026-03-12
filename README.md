@@ -1,6 +1,6 @@
 # Predict Stock Direction With Supervised Learning
 
-**Latest:** Last updated: 2026-02-19. Recent: linked [INSTRUCTION.md](INSTRUCTION.md), updated project schedule. 
+**Latest:** Last updated: 2026-03-11. Recent: linked [INSTRUCTION.md](INSTRUCTION.md), updated project schedule, Week 3 (Data Processing) marked complete.
 > **Note:** For latest changes and important updates, see the top of this README.
 
 ## CS 506 Project Proposal
@@ -73,9 +73,9 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 | Week      | Phase                    | Key Tasks                                                                                          | Status |
 |-----------|--------------------------|----------------------------------------------------------------------------------------------------|--------|
 | Week 1    | Planning & Setup         | Define project objectives and requirements; set up software tools and team organization.           | 🟢     |
-| Week 2    | Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |  🟡    |
-| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       | 🔴     |
-| Week 4    | Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          | 🔴     |
+| Week 2    | Data Acquisition         | Gather/source all raw data (e.g., via API or download) and ensure appropriate coverage.            |  🟢    |
+| Week 3    | Data Processing          | Clean and preprocess data for consistency, handle missing values, and structure for analysis.       | 🟢     |
+| Week 4    | Feature Engineering      | Develop and select informative features to support model learning and improve predictions.          | 🟡     |
 | Week 5    | Model Development        | Build, train, and tune multiple models using chosen features and methodologies.                     | 🔴     |
 | Week 6    | Evaluation               | Assess models using balanced performance metrics (accuracy, recall, precision, ROC-AUC).            | 🔴     |
 | Week 7    | Visualization            | Develop clear and unbiased visualizations to communicate results and insights.                      | 🔴     |
@@ -105,7 +105,7 @@ We'll statistically test if any model beats the 50% random-guess baseline to con
 
 | Team Member       | Main Responsibilities                           |
 |-------------------|------------------------------------------------|
-| Xiankun Zeng      | ...   |
+| Xiankun Zeng      | Data Acquisition   |
 | Haoran Zhang      | ...   |
 | Hoang Anh Vu      | Data Processing   |
 | Teammate 4        | ...   |

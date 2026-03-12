@@ -23,16 +23,36 @@ for TICKER in TICKERS:
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.sort_values("Date")
 
-    # feature Engineering 
+    # ====== Feature Engineering ======
+    # Daily return
     df["return"] = df["Close"].pct_change()
+
+    # Next-day direction label
     df["label"] = (df["return"].shift(-1) > 0).astype(int)
 
+    # Basic return features
     df["lag_return_1"] = df["return"]
     df["rolling_mean_5"] = df["return"].rolling(5).mean()
     df["rolling_std_5"] = df["return"].rolling(5).std()
 
-    df = df.dropna().reset_index(drop=True)
+    # Momentum features
+    df["momentum_5"] = df["Close"] / df["Close"].shift(5) - 1
+    df["momentum_10"] = df["Close"] / df["Close"].shift(10) - 1
 
+    # Moving average features
+    df["ma_5"] = df["Close"].rolling(5).mean()
+    df["ma_10"] = df["Close"].rolling(10).mean()
+
+    # Volatility feature
+    df["volatility_10"] = df["return"].rolling(10).std()
+
+    # Volume-based features
+    df["volume_change"] = df["Volume"].pct_change()
+    df["volume_ma_5"] = df["Volume"].rolling(5).mean()
+
+    # VERY IMPORTANT
+    df = df.dropna().reset_index(drop=True)
+    
     # Save full dataset
     processed_path = os.path.join(PROCESSED_DIR, f"{TICKER}_processed.csv")
     df.to_csv(processed_path, index=False)
