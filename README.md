@@ -36,7 +36,7 @@ This problem is formulated as a binary classification task, which is more robust
 | **Model Comparison** | Compare the predictive performance of linear (Logistic Regression) and non-linear models (Random Forest and Gradient Boosted Trees) using identical feature sets and chronological data splits. |
 | **Evaluation Strategy** | Assess model performance on a held-out test set using Accuracy, Precision, Recall, and ROC-AUC to capture both overall correctness and class-level behavior. |
 | **Baselines** | Benchmark all models against random guessing (50%), an always-positive predictor, and a minimal-feature logistic regression model to contextualize results. |
-
+| **Extra Work(if we have enought plan)** | Now instead of making a binary prediction to the stock, we can make a quantatative, discrete signal measuring detailed analysis on the stock.(e.x. WeBull havs a cool discrete signal containing [Strong Buy, Buy, Hold, Underperform, Sell] signals that is useful to reference).|
 ---
 
 ## 3. Data Collection Plan
@@ -58,6 +58,8 @@ We can start from building logistic regression and linear regression to explore 
 ---
 
 ## 5. Visualization Plan
+Tableau or PowerBI is preffered. Another option is to make a website or publish the dataset to Kaggle.
+
 Tableau or PowerBI is preffered. Another option is to make a website or publish the dataset to Kaggle.
 
 
