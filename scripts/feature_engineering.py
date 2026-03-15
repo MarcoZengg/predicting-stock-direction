@@ -244,7 +244,6 @@ def main():
     Main execution
     """
     print("=" * 60)
-    print("CS 506 - FEATURE ENGINEERING PHASE (WEEK 4)")
     print("=" * 60)
     
     # First pass: load all data for cross-ETF features
@@ -289,3 +288,24 @@ if __name__ == "__main__":
         subprocess.check_call([sys.executable, "-m", "pip", "install", "ta"])
     
     main()
+
+
+
+"""
+Raw Data (CSV) 
+    → Load & Clean 
+    → Basic Features 
+    → Technical Indicators 
+    → Market Regime Features 
+    → Cross-ETF Features 
+    → Feature Selection 
+    → Save Processed Files
+
+Feature engineering is transforming raw data into informative features that help your model learn better. 
+
+Script is processing 3 ETFs (SPY, QQQ, IWM) and for each one it:
+Calculates correlations between features and the target (next-day direction)
+Shows top 10 features (most predictive ones)
+Saves processed data with 50+ features
+Creates train/test splits (80/20 chronological)
+"""
