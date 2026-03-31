@@ -28,7 +28,8 @@ for TICKER in TICKERS:
     df["return"] = df["Close"].pct_change()
 
     # Next-day direction label
-    df["label"] = (df["return"].shift(-1) > 0).astype(int)
+    threshold = 0.002  # 0.2%
+    df["label"] = (df["return"].shift(-1) > threshold).astype(int)
 
     # Basic return features
     df["lag_return_1"] = df["return"]
