@@ -89,7 +89,10 @@ for TICKER in TICKERS:
 
     # ====== Base Feature Engineering ======
     df["return"] = df["Close"].pct_change()
-    df["label"] = (df["return"].shift(-1) > 0).astype(int)
+
+    # Next-day direction label
+    threshold = 0.002  # 0.2%
+    df["label"] = (df["return"].shift(-1) > threshold).astype(int)
 
     # Existing features
     df["lag_return_1"] = df["return"]
