@@ -184,7 +184,7 @@ def create_class_balance_plot():
     # Add annotation with threshold info
     ax.text(0.02, 0.98, 
             f'Note: Label = 1 only if return > {THRESHOLD*100:.1f}%\n'
-            'All ETFs have more up days than down days,\nreflecting the long-term bull market bias.',
+            'All ETFs have more down days than up days,\nreflecting the long-term bull market bias.',
             transform=ax.transAxes, fontsize=9, verticalalignment='top',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
     
