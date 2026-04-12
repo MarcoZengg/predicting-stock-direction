@@ -299,12 +299,9 @@ def plot_model_results(y_test, y_pred, y_proba, model=None, feature_names=None,
 # ============================================
 
 # Example 1: Logistic Regression
-# from sklearn.linear_model import LogisticRegression
-# model = LogisticRegression()
-# model.fit(X_train, y_train)
-# y_pred = model.predict(X_test)
-# y_proba = model.predict_proba(X_test)[:, 1]
-# 
+# from visualization_train import plot_model_results
+# VIZ_DIR = os.path.join(PROJECT_ROOT, "data","images","logistic")
+# os.makedirs(VIZ_DIR, exist_ok=True)
 # metrics, files = plot_model_results(
 #     y_test=y_test,
 #     y_pred=y_pred,
@@ -312,26 +309,25 @@ def plot_model_results(y_test, y_pred, y_proba, model=None, feature_names=None,
 #     model=model,
 #     feature_names=FEATURES,
 #     model_name="LogisticRegression",
-#     save_dir="visualizations",
+#     save_dir=VIZ_DIR,
 #     test_data=test,
 #     date_col='Date'
 # )
 
 # Example 2: XGBoost
-# import xgboost as xgb
-# model = xgb.XGBClassifier()
-# model.fit(X_train, y_train)
-# y_pred = model.predict(X_test)
-# y_proba = model.predict_proba(X_test)[:, 1]
-# 
+# from visualization_train import plot_model_results
+# VIZ_DIR = os.path.join(PROJECT_ROOT, "data","images","xgboost")
+# os.makedirs(VIZ_DIR, exist_ok=True)
 # metrics, files = plot_model_results(
-#     y_test=y_test,
-#     y_pred=y_pred,
-#     y_proba=y_proba,
+#     y_test=y_processed,
+#     y_pred=y_pred_all,
+#     y_proba=y_proba_all,
 #     model=model,
 #     feature_names=FEATURES,
 #     model_name="XGBoost",
-#     save_dir="visualizations"
+#     save_dir=VIZ_DIR,
+#     test_data=processed_clean,
+#     date_col='Date'
 # )
 
 # Example 3: Without model (just predictions)
