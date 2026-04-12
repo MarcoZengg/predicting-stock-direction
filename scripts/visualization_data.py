@@ -178,7 +178,7 @@ def create_class_balance_plot():
     ax.set_xticks(x_pos)
     ax.set_xticklabels(symbols)
     ax.legend()
-    ax.set_ylim(0.45, 0.65)
+    ax.set_ylim(0, 1)
     ax.grid(True, alpha=0.3, axis='y')
     
     # Add annotation with threshold info
