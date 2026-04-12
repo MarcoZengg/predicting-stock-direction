@@ -5,3 +5,25 @@ data/raw/
 data/processed/
 data/processed_enhanced/
 *.csv
+
+# Keep empty directories
+!.gitkeep
+
+*data
+*note.txt
+*.venv
+
+# Cache
+*.cache
+.cache/
+yfinance*.cache
+
+# Keep empty directories
+!.gitkeep
+
+*note.txt
+
+# Cache
+*.cache
+.cache/
+yfinance*.cache
