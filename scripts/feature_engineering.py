@@ -308,4 +308,111 @@ Calculates correlations between features and the target (next-day direction)
 Shows top 10 features (most predictive ones)
 Saves processed data with 50+ features
 Creates train/test splits (80/20 chronological)
+
+The feature engineering process successfully transformed raw OHLCV data into 50+ technical indicators 
+for three major ETFs (SPY, QQQ, IWM) over the 2010-2025 period, creating a robust dataset of 3,824 trading days 
+per ETF with an 80/20 chronological train-test split. Analysis of feature-target correlations reveals consistently 
+weak predictive signals across all assets, with the strongest features achieving correlations of only 0.027-0.036—a 
+finding that actually validates the integrity of our approach, as daily stock direction is notoriously difficult 
+to predict in efficient markets. Interesting patterns emerge across ETFs: large-cap indices (SPY and QQQ) share 
+similar top predictors centered on volatility regimes and lagged returns, while small-cap IWM shows slightly stronger 
+signals from trend strength and price levels, suggesting different market dynamics. The class imbalance (53.4-55.9% up days) 
+reflects the long-term bull market bias and establishes a realistic baseline that any predictive model must outperform. 
+These low correlations confirm that no single feature can reliably predict next-day direction, setting the stage for 
+evaluating whether machine learning models can combine these weak signals into meaningful predictions that beat simple baselines.
+
+============================================================
+Processing SPY...
+============================================================
+
+Top 10 features by correlation with target:
+return           0.026735
+lag_return_10    0.024354
+lag_return_1     0.024200
+adx_pos          0.020491
+rsi_14           0.019009
+ma_ratio_20      0.018650
+obv              0.017601
+ma_ratio_50      0.017478
+obv_ma_5         0.016657
+mfi              0.016473
+Name: label, dtype: float64
+
+✅ Saved: C:\D\Boston Uni\Spring 2026\CS506\Final Project\predicting-stock-direction\data\processed\SPY_processed.csv
+   Shape: (3824, 51)
+   Date range: 2010-10-18 to 2025-12-30
+   Label distribution: 0.554
+   Numeric features: 20
+   Train: 3059 samples (2010-10-18 to 2022-12-09)
+   Test: 765 samples (2022-12-12 to 2025-12-30)
+
+============================================================
+Processing QQQ...
+============================================================
+
+Top 10 features by correlation with target:
+vol_regime         0.027336
+lag_return_10      0.026757
+macd_diff          0.021725
+lag_return_1       0.021372
+body_ratio         0.019926
+return             0.019853
+volatility_10      0.019482
+volatility_30      0.019244
+trend_strength     0.018730
+relative_volume    0.017411
+Name: label, dtype: float64
+
+✅ Saved: C:\D\Boston Uni\Spring 2026\CS506\Final Project\predicting-stock-direction\data\processed\QQQ_processed.csv
+   Shape: (3824, 54)
+   Date range: 2010-10-18 to 2025-12-30
+   Label distribution: 0.559
+   Numeric features: 20
+   Train: 3059 samples (2010-10-18 to 2022-12-09)
+   Test: 765 samples (2022-12-12 to 2025-12-30)
+
+============================================================
+Processing IWM...
+============================================================
+
+Top 10 features by correlation with target:
+trend_strength    0.036219
+Low               0.032638
+Close             0.032548
+Open              0.032359
+High              0.032281
+bb_low            0.030545
+rsi_14            0.030265
+ma_20             0.030107
+adx_neg           0.029898
+adx_pos           0.029750
+Name: label, dtype: float64
+
+✅ Saved: C:\D\Boston Uni\Spring 2026\CS506\Final Project\predicting-stock-direction\data\processed\IWM_processed.csv
+   Shape: (3824, 54)
+   Date range: 2010-10-18 to 2025-12-30
+   Label distribution: 0.534
+   Numeric features: 20
+   Train: 3059 samples (2010-10-18 to 2022-12-09)
+   Test: 765 samples (2022-12-12 to 2025-12-30)
+
+============================================================
+FEATURE ENGINEERING SUMMARY
+============================================================
+
+SPY:
+  Total numeric features: 50
+  Samples: 3824
+  Date range: 2010-10-18 to 2025-12-30
+
+QQQ:
+  Total numeric features: 53
+  Samples: 3824
+  Date range: 2010-10-18 to 2025-12-30
+
+IWM:
+  Total numeric features: 53
+  Samples: 3824
+  Date range: 2010-10-18 to 2025-12-30
 """
+
