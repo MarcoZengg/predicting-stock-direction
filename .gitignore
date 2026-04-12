@@ -1,6 +1,10 @@
 data/raw/*.csv
 data/processed/*.csv
 
+data/raw/
+data/processed/
+data/processed_enhanced/
+*.csv
 
 # Keep empty directories
 !.gitkeep
