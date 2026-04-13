@@ -236,7 +236,7 @@ def plot_model_results(y_test, y_pred, y_proba, model=None, feature_names=None,
                 rec = recall_vals[close_idx]
                 prec = precision_vals[close_idx]
                 plt.scatter(rec, prec, color='purple', s=50, zorder=4, marker='s',
-                           label=f'Threshold={key_thresh}' if key_thresh == 0.5 else "")
+                           label=f'Best Theorized Threshold={key_thresh}' if key_thresh == 0.5 else "")
                 plt.annotate(f'{key_thresh}', 
                             xy=(rec, prec),
                             xytext=(10, -8), 
