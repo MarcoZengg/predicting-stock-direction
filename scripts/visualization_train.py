@@ -9,7 +9,8 @@ from sklearn.metrics import (
 )
 
 def plot_model_results(y_test, y_pred, y_proba, model=None, feature_names=None, 
-                       model_name="Model", save_dir="images/visualizations", test_data=None, date_col=None):
+                       model_name="Model", save_dir="images/visualizations", test_data=None, date_col=None,
+                        show_thresholds=True, n_thresholds=10):
     """
     Generate comprehensive visualizations for classification model results.
     
@@ -186,13 +187,68 @@ def plot_model_results(y_test, y_pred, y_proba, model=None, feature_names=None,
     # ============================================
     precision_vals, recall_vals, thresholds_pr = precision_recall_curve(y_test, y_proba)
     
-    plt.figure(figsize=(8, 6))
-    plt.plot(recall_vals, precision_vals, 'b-', linewidth=2, label=model_name)
+    # Calculate F1 scores for each threshold
+    f1_scores = 2 * (precision_vals[:-1] * recall_vals[:-1]) / (precision_vals[:-1] + recall_vals[:-1] + 1e-10)
+    optimal_idx = np.argmax(f1_scores)
+    optimal_threshold = thresholds_pr[optimal_idx]
+    
+    plt.figure(figsize=(10, 8))
+    
+    # Plot PR curve
+    plt.plot(recall_vals, precision_vals, 'b-', linewidth=2, label=f'{model_name} (AUC-PR = {np.trapezoid(precision_vals, recall_vals):.3f})')
     plt.fill_between(recall_vals, precision_vals, alpha=0.2, color='blue')
-    plt.xlabel('Recall', fontsize=12)
-    plt.ylabel('Precision', fontsize=12)
-    plt.title(f'{model_name} - Precision-Recall Curve', fontsize=14)
-    plt.legend(loc='best', fontsize=11)
+    
+    # Mark optimal threshold (max F1)
+    plt.scatter(recall_vals[optimal_idx], precision_vals[optimal_idx], 
+               color='red', s=150, zorder=5, marker='*',
+               label=f'Optimal (F1={f1_scores[optimal_idx]:.3f}, thresh={optimal_threshold:.3f})')
+    
+    # Add threshold annotations
+    if show_thresholds:
+        # Select thresholds to display
+        threshold_indices = np.linspace(0, len(thresholds_pr)-1, min(n_thresholds, len(thresholds_pr)), dtype=int)
+        
+        for idx in threshold_indices:
+            if idx < len(thresholds_pr):
+                thresh = thresholds_pr[idx]
+                rec = recall_vals[idx]
+                prec = precision_vals[idx]
+                
+                # Skip if point is too close to optimal to avoid clutter
+                if abs(idx - optimal_idx) > len(thresholds_pr) // n_thresholds:
+                    # Add small dot
+                    plt.scatter(rec, prec, color='orange', s=30, alpha=0.6, zorder=3)
+                    # Add threshold label
+                    plt.annotate(f'{thresh:.2f}', 
+                                xy=(rec, prec),
+                                xytext=(5, 5), 
+                                textcoords='offset points',
+                                fontsize=7,
+                                alpha=0.6,
+                                bbox=dict(boxstyle='round,pad=0.2', facecolor='yellow', alpha=0.5))
+        
+        # Also add key thresholds (0.3, 0.4, 0.5, 0.6, 0.7)
+        key_thresholds = [0.3, 0.4, 0.5, 0.6, 0.7]
+        for key_thresh in key_thresholds:
+            # Find closest threshold
+            close_idx = np.argmin(np.abs(thresholds_pr - key_thresh))
+            if close_idx < len(thresholds_pr):
+                rec = recall_vals[close_idx]
+                prec = precision_vals[close_idx]
+                plt.scatter(rec, prec, color='purple', s=50, zorder=4, marker='s',
+                           label=f'Threshold={key_thresh}' if key_thresh == 0.5 else "")
+                plt.annotate(f'{key_thresh}', 
+                            xy=(rec, prec),
+                            xytext=(10, -8), 
+                            textcoords='offset points',
+                            fontsize=8,
+                            fontweight='bold',
+                            bbox=dict(boxstyle='round,pad=0.2', facecolor='white', alpha=0.7))
+    
+    plt.xlabel('Recall (True Positive Rate)', fontsize=12)
+    plt.ylabel('Precision (Positive Predictive Value)', fontsize=12)
+    plt.title(f'{model_name} - Precision-Recall Curve with Thresholds', fontsize=14)
+    plt.legend(loc='best', fontsize=10)
     plt.grid(alpha=0.3)
     plt.tight_layout()
     filepath = os.path.join(save_dir, f'{model_name.lower()}_5_precision_recall_curve.png')
