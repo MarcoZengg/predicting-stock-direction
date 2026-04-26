@@ -23,5 +23,4 @@ yfinance*.cache
 # Keep tracked project artifacts (data/results) reproducible in repo.
 
 # Temporary: ignore large project outputs/content before push
-data/
-results/
+data/news_data

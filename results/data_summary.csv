@@ -1,0 +1,4 @@
+ticker,rows,train_rows,test_rows,start_date,end_date,positive_label_rate,feature_count
+SPY,4000,3200,800,2010-02-02,2025-12-29,0.5537,58
+QQQ,4000,3200,800,2010-02-02,2025-12-29,0.5595,57
+IWM,4000,3200,800,2010-02-02,2025-12-29,0.5343,57
