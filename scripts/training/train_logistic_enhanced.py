@@ -1,14 +1,19 @@
 import os
+import sys
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 from sklearn.preprocessing import StandardScaler
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+VISUALIZATION_DIR = os.path.join(PROJECT_ROOT, "scripts", "visualization")
+if VISUALIZATION_DIR not in sys.path:
+    sys.path.append(VISUALIZATION_DIR)
+
 from visualization_train import plot_model_results
 
 # ====== Project Paths ======
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 
 DATA_DIR = os.path.join(PROJECT_ROOT, "data", "processed_enhanced")
 

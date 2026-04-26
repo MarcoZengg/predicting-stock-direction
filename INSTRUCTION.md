@@ -2,12 +2,19 @@
 
 ## Getting Started
 
+From the repository root, run:
+
+```bash
+make install
+make test
+```
+
 ### How to Download Data
 
 1. **Install dependencies**
 
    ```bash
-   pip install yfinance pandas
+   make install
    ```
 
 2. **Create the data directory** (if it doesn't exist)
@@ -39,7 +46,7 @@ Run this **after** you have raw data in `data/raw/` (see *How to Download Data* 
 1. **Install dependencies** (if not already installed)
 
    ```bash
-   pip install pandas
+   make install
    ```
 
 2. **Run the process script** from the project root

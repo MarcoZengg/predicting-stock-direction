@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import os
 import numpy as np
 
-# Dynamically determine the base directory
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Dynamically determine the project root directory
+base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 processed_data_dir = os.path.join(base_dir, 'data', 'processed')
 
 # Define path for saving images

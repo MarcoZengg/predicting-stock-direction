@@ -1,29 +1,27 @@
-data/raw/*.csv
-data/processed/*.csv
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
 
-data/raw/
-data/processed/
-data/processed_enhanced/
-*.csv
+# OS / editor noise
+.DS_Store
+._*
+.idea/
+.vscode/
+.ipynb_checkpoints/
 
-# Keep empty directories
-!.gitkeep
-
-*data
-*note.txt
+# Local virtual environments
+.venv/
+venv/
 *.venv
 
-# Cache
+# Runtime caches
 *.cache
 .cache/
 yfinance*.cache
 
-# Keep empty directories
-!.gitkeep
+# Keep tracked project artifacts (data/results) reproducible in repo.
 
-*note.txt
-
-# Cache
-*.cache
-.cache/
-yfinance*.cache
+# Temporary: ignore large project outputs/content before push
+data/
+results/

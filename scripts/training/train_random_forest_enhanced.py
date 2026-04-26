@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_a
 
 # ====== Project Paths ======
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(SCRIPT_DIR))
 
 DATA_DIR = os.path.join(PROJECT_ROOT, "data", "processed_enhanced")
 
