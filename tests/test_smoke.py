@@ -13,9 +13,9 @@ def test_required_project_files_exist():
         PROJECT_ROOT / "README.md",
         PROJECT_ROOT / "Makefile",
         PROJECT_ROOT / "requirements.txt",
-        PROJECT_ROOT / "scripts" / "process_data.py",
-        PROJECT_ROOT / "scripts" / "train_logistic.py",
-        PROJECT_ROOT / "scripts" / "train_random_forest.py",
+        PROJECT_ROOT / "scripts" / "data" / "process_data.py",
+        PROJECT_ROOT / "scripts" / "training" / "train_logistic.py",
+        PROJECT_ROOT / "scripts" / "training" / "train_random_forest.py",
     ]
     missing = [str(path) for path in required if not path.exists()]
     assert not missing, f"Missing required files: {missing}"
@@ -40,7 +40,7 @@ def test_results_metrics_schema():
 
 
 def test_pipeline_scripts_helpfully_fail_or_run():
-    script = PROJECT_ROOT / "scripts" / "process_data.py"
+    script = PROJECT_ROOT / "scripts" / "data" / "process_data.py"
     result = subprocess.run(
         [sys.executable, str(script)],
         cwd=PROJECT_ROOT,
