@@ -14,6 +14,7 @@ YouTube link (temporary): [Project Presentation (replace with final upload)](htt
 - [Testing and GitHub Workflow](#testing-and-github-workflow)
 - [Project Overview and Goal](#project-overview-and-goal)
 - [Data Collection](#data-collection)
+- [News Processing Notebook](#news-processing-notebook)
 - [Data Cleaning](#data-cleaning)
 - [Feature Extraction](#feature-extraction)
 - [Modeling](#modeling)
@@ -51,6 +52,8 @@ make reproduce
 - `scripts/data/process_data.py`
 - `scripts/training/train_logistic.py`
 - `scripts/training/train_random_forest.py`
+
+The notebook-based news workflow is separate from `make reproduce`. To run it, launch Jupyter and open `scripts/notebooks/process_news.ipynb`.
 
 ---
 
@@ -156,6 +159,57 @@ ETFs (`SPY`, `QQQ`, `IWM`) were selected instead of individual stocks to reduce 
 | `QQQ`  | 2010-02-02 | 2025-12-29 | 4,000      | 3,200      | 800       |
 | `IWM`  | 2010-02-02 | 2025-12-29 | 4,000      | 3,200      | 800       |
 
+
+---
+
+## News Processing Notebook
+
+### What this section covers
+
+What `scripts/notebooks/process_news.ipynb` does and how it connects raw news, transformer embeddings, and downstream experiments on `GOOG`.
+
+### Code/files used
+
+- `scripts/notebooks/process_news.ipynb`
+- `scripts/experimental/news_transformer_prototype.py`
+- `data/raw/GOOG_historical.csv`
+
+### Output artifacts
+
+- `data/news_data/news_sentiment.csv`
+- `data/news_data/news_sentiment_transformer_features.csv`
+- `data/news_data/xgboost_classification_metrics.csv`
+- `data/news_data/xgboost_classification_predictions.csv`
+- `data/news_data/xgboost_classification_report.csv`
+
+### What `process_news.ipynb` does
+
+1. Pulls ticker-specific news from the Alpha Vantage `NEWS_SENTIMENT` API and appends deduplicated rows to `data/news_data/news_sentiment.csv`.
+2. Runs `scripts/experimental/news_transformer_prototype.py` to combine each article's title, summary, and source category into one text field and encode it with `distilbert-base-uncased`.
+3. Saves the resulting transformer embedding columns as `text_emb_*` features in `data/news_data/news_sentiment_transformer_features.csv`.
+4. Trains a multiclass XGBoost model to predict `ticker_sentiment_label` from those embedding features using a chronological split.
+5. Trains a logistic-regression baseline on the same embedding table for comparison.
+6. Aggregates news-derived predictions by day and aligns them with `GOOG` price history to test whether news features help predict next-day price direction.
+7. Produces exploratory plots for sentiment-label frequency, sentiment-score behavior over time, and model comparison outputs.
+
+### How to run it
+
+```bash
+jupyter notebook scripts/notebooks/process_news.ipynb
+```
+
+Recommended notebook order:
+
+1. Update the Alpha Vantage API key and ticker in the first cell.
+2. Run the first cell to refresh `news_sentiment.csv`.
+3. Run the next cell to execute `news_transformer_prototype.py` and generate transformer features.
+4. Continue through the training, evaluation, alignment, and visualization cells.
+
+### Notes and assumptions
+
+- This workflow is currently focused on `GOOG`; later cells explicitly join against `data/raw/GOOG_historical.csv`.
+- The transformer step downloads a Hugging Face model the first time it runs, so internet access is required.
+- The notebook is an experimental extension to the main ETF price-direction pipeline and is not part of `make reproduce`.
 
 ---
 
