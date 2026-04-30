@@ -398,6 +398,13 @@ Takeaway: All model families are now visualized, enabling side-by-side compariso
 Caption: ROC and precision-recall curves for all three model families on SPY.  
 Takeaway: Curves across models can now be compared directly under the same ticker; equivalent sets were also generated for QQQ and IWM.
 
+**Figure 5 - News XGBoost confusion matrix from `process_news.ipynb`**
+
+![News XGBoost Confusion Matrix](data/images/output.png)
+
+Caption: Confusion matrix for the multiclass XGBoost model trained on transformer embeddings generated from financial news text in `scripts/notebooks/process_news.ipynb`.  
+Takeaway: The model performs best in the middle sentiment bands, especially `Neutral` and `Somewhat-Bullish`, where the diagonal cells are strongest. Most errors occur between neighboring sentiment categories rather than between opposite extremes, which suggests the text embeddings capture general sentiment direction but still struggle to separate subtle intensity differences. A notable limitation is that the model makes almost no `Bearish` predictions, and many true `Bullish` or `Somewhat-Bearish` examples are pulled toward `Neutral` or `Somewhat-Bullish`. This pattern is consistent with class imbalance and semantic overlap in financial headlines: extreme labels are rarer, while moderate sentiment language is more common and harder to distinguish cleanly.
+
 Additional generated outputs for all tickers/models:
 
 - `data/images/all_models/spy/`
