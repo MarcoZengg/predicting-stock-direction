@@ -426,7 +426,7 @@ Constraints of current approach and next steps.
 | Xiankun Zeng  | Data Acquisition      |
 | Haoran Zhang  | Data Processing       |
 | Hoang Anh Vu  | Data Processing       |
-| Team Member 4 | ...                   |
+| Lingjie Su | ...                   |
 
 
 ### To finalize before submission
@@ -434,7 +434,7 @@ Constraints of current approach and next steps.
 - Xiankun Zeng: implemented and validated data collection scripts; verified ticker/date coverage and raw file integrity; documented source assumptions and retrieval flow.
 - Haoran Zhang: built core preprocessing steps (sorting, labeling, split logic); ensured processed outputs were reproducible; validated train/test artifacts.
 - Hoang Anh Vu: expanded feature engineering and indicator creation; supported feature interpretation and artifact generation; assisted with pipeline consistency checks.
-- Team Member 4: executed model training and metric comparison; consolidated evaluation outputs; supported result interpretation and visualization linkage in the report.
+- Lingjie Su: executed model training and metric comparison; consolidated evaluation outputs; supported result interpretation and visualization linkage in the report.
 
 ---
 
