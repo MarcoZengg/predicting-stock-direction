@@ -17,7 +17,7 @@ YouTube link: [Project Presentation](https://youtu.be/02thZ96sEEA)
 - [Feature Extraction](#feature-extraction)
 - [Modeling](#modeling)
 - [Visualizations of Data](#visualizations-of-data-interactive-encouraged)
-- [Results](#results)
+- [Conclusion](#Conclusion)
 - [Limitations and Future Work](#limitations-and-future-work)
 - [Team Contributions](#team-contributions)
 
@@ -54,6 +54,18 @@ The notebook-based news workflow is separate from `make reproduce`. To run it, l
 ## Testing and GitHub Workflow
 
 [![CI](https://github.com/MarcoZengg/predicting-stock-direction/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MarcoZengg/predicting-stock-direction/actions/workflows/ci.yml)
+
+Tests run locally and in CI use the same command: `make test` (which executes `pytest -q`).
+
+### Test matrix
+
+| Test name                                | Command / Location         | What it validates                                                                 |
+| ---------------------------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| `test_required_project_files_exist`      | `tests/test_smoke.py`      | Required deliverables exist (`README.md`, `Makefile`, key training/data scripts) |
+| `test_results_metrics_schema`            | `tests/test_smoke.py`      | `results/metrics.csv` exists, has expected schema, and contains rows             |
+| `test_pipeline_scripts_helpfully_fail_or_run` | `tests/test_smoke.py` | `scripts/data/process_data.py` either runs successfully or fails with clear file-message behavior |
+| CI job: install + test                   | `.github/workflows/ci.yml` | On push/PR, GitHub Actions runs `make install` then `make test` on Ubuntu/Python 3.10 |
+
 ### Code/files
 
 - `tests/test_smoke.py`
@@ -89,18 +101,19 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 
 ### Architecture and data flow
 
+<div align="center">
+
 ```mermaid
 flowchart LR
-  data["Data 
-  Collection"] --> cleaning["Data 
-  Cleaning"]
-  cleaning --> features["Feature 
-  Engeneering"]
-  features --> models["Training"]
-  models --> evaluation["Evaluation"]
-  evaluation --> results["Results/
-  Visualization"]
+  data["<b>Data Collection</b>"]
+    --> cleaning["<b>Data Cleaning</b>"]
+    --> features["<b>Feature Engineering</b>"]
+    --> models["<b>Model Training</b>"]
+    --> evaluation["<b>Model Evaluation</b>"]
+    --> results["<b>Results & Visualization</b>"]
 ```
+
+</div>
 
 
 ## Data Collection
@@ -356,9 +369,7 @@ Additional generated outputs for all tickers/models:
   <img src="data/images/output.png" alt="News XGBoost Confusion Matrix""/>
 </p>
 
-
-
-## Results
+## Conclusion
 
 ### Current highlights
 
