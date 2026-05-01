@@ -359,6 +359,12 @@ Additional generated outputs for all tickers/models:
 
 These diagnostics complement confusion-matrix and ROC views by showing what drives predictions and how confidence/distribution patterns behave through time.
 
+Additional generated outputs for all tickers/models:
+
+- `data/images/all_models/spy/`
+- `data/images/all_models/qqq/`
+- `data/images/all_models/iwm/`
+
 <p align="center">
   <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_3_feature_importance.png" alt="SPY Logistic Feature Importance" height="500"/>
   <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_4_probability_distribution.png" alt="SPY Logistic Probability Distribution" height="500"/>
