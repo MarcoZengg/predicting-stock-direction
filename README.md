@@ -110,12 +110,6 @@ flowchart TB
     --> models["Model Training"]
     --> evaluation["Model Evaluation"]
     --> results["Results and Visualization"]
-  style data width:250px
-  style cleaning width:245px
-  style features width:280px
-  style models width:250px
-  style evaluation width:270px
-  style results width:320px
 ```
 
 
