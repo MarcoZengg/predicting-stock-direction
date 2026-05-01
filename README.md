@@ -101,7 +101,6 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 
 ### Architecture and data flow
 
-<div align="center">
 
 ```mermaid
 flowchart TB
@@ -112,7 +111,6 @@ flowchart TB
     --> evaluation["Model Evaluation"]
     --> results["Results & Visualization"]
 ```
-</div>
 
 
 ## Data Collection
