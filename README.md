@@ -54,7 +54,7 @@ The notebook-based news workflow is separate from `make reproduce`. To run it, l
 ## Testing and GitHub Workflow
 
 [![CI](https://github.com/MarcoZengg/predicting-stock-direction/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MarcoZengg/predicting-stock-direction/actions/workflows/ci.yml)
-### Code/files used
+### Code/files
 
 - `tests/test_smoke.py`
 - `.github/workflows/ci.yml`
@@ -91,11 +91,15 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 
 ```mermaid
 flowchart LR
-  data["Data Collection"] --> cleaning["Data Cleaning"]
-  cleaning --> features["Feature Engeneering"]
+  data["Data 
+  Collection"] --> cleaning["Data 
+  Cleaning"]
+  cleaning --> features["Feature 
+  Engeneering"]
   features --> models["Training"]
   models --> evaluation["Evaluation"]
-  evaluation --> results["Results/Visualization"]
+  evaluation --> results["Results/
+  Visualization"]
 ```
 
 
@@ -121,6 +125,7 @@ ETFs (`SPY`, `QQQ`, `IWM`) were selected instead of individual stocks to reduce 
 | `QQQ`  | 2010-02-02 | 2025-12-29 | 4,000      | 3,200      | 800       |
 | `IWM`  | 2010-02-02 | 2025-12-29 | 4,000      | 3,200      | 800       |
 
+![Price Trend and Train/Test Split](data/images/data_analysis/SPY_data_analysis.png)
 
 ## News Processing Notebook
 
@@ -128,13 +133,13 @@ ETFs (`SPY`, `QQQ`, `IWM`) were selected instead of individual stocks to reduce 
 
 What `scripts/notebooks/process_news.ipynb` does and how it connects raw news, transformer embeddings, and downstream experiments on `GOOG`.
 
-### Code/files used
+### Code/files
 
 - `scripts/notebooks/process_news.ipynb`
 - `scripts/experimental/news_transformer_prototype.py`
 - `data/raw/GOOG_historical.csv`
 
-### Output artifacts
+### Output
 
 - `data/news_data/news_sentiment.csv`
 - `data/news_data/news_sentiment_transformer_features.csv`
@@ -173,7 +178,7 @@ Recommended notebook order:
 
 ## Data Cleaning
 
-### Code/files used
+### Code/files
 
 - `scripts/data/process_data.py`
 
@@ -196,7 +201,7 @@ Recommended notebook order:
 
 ## Feature Extraction
 
-### Code/files used
+### Code/files
 
 - `scripts/data/process_data.py`
 - `scripts/data/feature_engineering.py`
@@ -241,7 +246,7 @@ Recommended notebook order:
 
 ## Modeling
 
-### Code/files used
+### Code/files
 
 - `scripts/training/train_logistic.py`
 - `scripts/training/train_random_forest.py`
@@ -272,78 +277,84 @@ Takeaway: No single model dominates every metric; Gradient Boosting and Logistic
 
 Individual metric charts:
 
-![Accuracy Comparison](data/images/results/accuracy_comparison.png)
-![Precision Comparison](data/images/results/precision_comparison.png)
-![Recall Comparison](data/images/results/recall_comparison.png)
-![F1 Comparison](data/images/results/f1_comparison.png)
-![ROC-AUC Comparison](data/images/results/roc_auc_comparison.png)
+<p align="center">
+<img src="data/images/results/accuracy_comparison.png" alt="Accuracy Comparison" height="400"/>
+<img src="data/images/results/precision_comparison.png" alt="Precision Comparison" height="400"/>
+<img src="data/images/results/recall_comparison.png" alt="Recall Comparison" height="400"/>
+<img src="data/images/results/f1_comparison.png" alt="F1 Comparison" height="400"/>
+<img src="data/images/results/roc_auc_comparison.png" alt="ROC-AUC Comparison" height="400"/>
+</p>
 
 These individual views are included for easier inspection of each evaluation criterion.
 
 
 
-## Visualizations of Data (Interactive Encouraged)
+## Visualizations of Data
 
-### What this section covers
-
-Static and interactive visual evidence supporting conclusions.
-
-### Code/files used
+### Code/files
 
 - `scripts/visualization/visualization_data.py`
 - `scripts/visualization/visualization_train.py`
 
-### Output artifacts
+### Output
 
-- Figures exported to your image/output folders
+**Figure 1 - Class balance across ETFs**
 
-**Figure 1 - Price trends by ticker**
+All tickers show mild class imbalance toward positive labels, which is why recall and ROC-AUC are reported alongside accuracy.
 
-![Price Trend and Train/Test Split](data/images/data_analysis/SPY_data_analysis.png)
+<p align="center">
+<img src="data/images/data_analysis/class_balance_all_etfs.png" alt="Class Balance Across ETFs" height="500"/>
+</p>
 
-Caption: SPY price trend with chronological train/test segmentation.  
-Takeaway: The split keeps test observations in the latest market regime, which better reflects realistic forward prediction.
+**Figure 2 - Confusion matrices (all model families on SPY)**
 
-**Figure 2 - Class balance across ETFs**
-
-![Class Balance Across ETFs](data/images/data_analysis/class_balance_all_etfs.png)
-
-Caption: Up/down label proportions for SPY, QQQ, and IWM after preprocessing.  
-Takeaway: All tickers show mild class imbalance toward positive labels, which is why recall and ROC-AUC are reported alongside accuracy.
-
-**Figure 3 - Confusion matrices (all model families on SPY)**
-
-![SPY Logistic Confusion Matrix](data/images/all_models/spy/logistic_regression/spy_logistic_regression_1_confusion_matrix.png)
-![SPY Random Forest Confusion Matrix](data/images/all_models/spy/random_forest/spy_random_forest_1_confusion_matrix.png)
-![SPY Gradient Boosting Confusion Matrix](data/images/all_models/spy/gradient_boosting/spy_gradient_boosting_1_confusion_matrix.png)
-
-Caption: Confusion matrices for logistic regression, random forest, and gradient boosting on SPY.  
-Takeaway: All model families are now visualized, enabling side-by-side comparison of error structure rather than relying on a single example model.
-
-**Figure 4 - ROC and PR curves (all model families on SPY)**
-
-![SPY Logistic ROC](data/images/all_models/spy/logistic_regression/spy_logistic_regression_2_roc_curve.png)
-![SPY Random Forest ROC](data/images/all_models/spy/random_forest/spy_random_forest_2_roc_curve.png)
-![SPY Gradient Boosting ROC](data/images/all_models/spy/gradient_boosting/spy_gradient_boosting_2_roc_curve.png)
-![SPY Logistic PR](data/images/all_models/spy/logistic_regression/spy_logistic_regression_5_precision_recall_curve.png)
-![SPY Random Forest PR](data/images/all_models/spy/random_forest/spy_random_forest_5_precision_recall_curve.png)
-![SPY Gradient Boosting PR](data/images/all_models/spy/gradient_boosting/spy_gradient_boosting_5_precision_recall_curve.png)
-
-Caption: ROC and precision-recall curves for all three model families on SPY.  
-Takeaway: Curves across models can now be compared directly under the same ticker; equivalent sets were also generated for QQQ and IWM.
-
-**Figure 5 - News XGBoost confusion matrix from `process_news.ipynb`**
-
-![News XGBoost Confusion Matrix](data/images/output.png)
-
-Caption: Confusion matrix for the multiclass XGBoost model trained on transformer embeddings generated from financial news text in `scripts/notebooks/process_news.ipynb`.  
-Takeaway: The model performs best in the middle sentiment bands, especially `Neutral` and `Somewhat-Bullish`, where the diagonal cells are strongest. Most errors occur between neighboring sentiment categories rather than between opposite extremes, which suggests the text embeddings capture general sentiment direction but still struggle to separate subtle intensity differences. A notable limitation is that the model makes almost no `Bearish` predictions, and many true `Bullish` or `Somewhat-Bearish` examples are pulled toward `Neutral` or `Somewhat-Bullish`. This pattern is consistent with class imbalance and semantic overlap in financial headlines: extreme labels are rarer, while moderate sentiment language is more common and harder to distinguish cleanly.
+All model families are now visualized, enabling side-by-side comparison of error structure rather than relying on a single example model.
 
 Additional generated outputs for all tickers/models:
 
 - `data/images/all_models/spy/`
 - `data/images/all_models/qqq/`
 - `data/images/all_models/iwm/`
+
+<p align="center">
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_1_confusion_matrix.png" alt="SPY Logistic Confusion Matrix" height="500"/>
+  <img src="data/images/all_models/spy/random_forest/spy_random_forest_1_confusion_matrix.png" alt="SPY Random Forest Confusion Matrix" height="500"/>
+  <img src="data/images/all_models/spy/gradient_boosting/spy_gradient_boosting_1_confusion_matrix.png" alt="SPY Gradient Boosting Confusion Matrix" height="500"/>
+</p>
+
+**Figure 3 - ROC and PR curves (all model families on SPY)**
+
+Curves across models can now be compared directly under the same ticker; equivalent sets were also generated for QQQ and IWM here.
+
+Additional generated outputs for all tickers/models:
+
+- `data/images/all_models/spy/`
+- `data/images/all_models/qqq/`
+- `data/images/all_models/iwm/`
+
+
+<p align="center">
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_2_roc_curve.png" alt="SPY Logistic ROC" height="500"/>
+  <img src="data/images/all_models/spy/random_forest/spy_random_forest_2_roc_curve.png" alt="SPY Random Forest ROC" height="500"/>
+  <img src="data/images/all_models/spy/gradient_boosting/spy_gradient_boosting_2_roc_curve.png" alt="SPY Gradient Boosting ROC" height="500"/>
+</p>
+
+
+**Figure 4 - News XGBoost confusion matrix from `process_news.ipynb`**
+
+Caption: Confusion matrix for the multiclass XGBoost model trained on transformer embeddings generated from financial news text in `scripts/notebooks/process_news.ipynb`.  
+Takeaway: The model performs best in the middle sentiment bands, especially `Neutral` and `Somewhat-Bullish`, where the diagonal cells are strongest. Most errors occur between neighboring sentiment categories rather than between opposite extremes, which suggests the text embeddings capture general sentiment direction but still struggle to separate subtle intensity differences. A notable limitation is that the model makes almost no `Bearish` predictions, and many true `Bullish` or `Somewhat-Bearish` examples are pulled toward `Neutral` or `Somewhat-Bullish`. This pattern is consistent with class imbalance and semantic overlap in financial headlines: extreme labels are rarer, while moderate sentiment language is more common and harder to distinguish cleanly.
+
+
+Additional generated outputs for all tickers/models:
+
+- `data/images/all_models/spy/`
+- `data/images/all_models/qqq/`
+- `data/images/all_models/iwm/`
+
+<p align="center">
+  <img src="data/images/output.png" alt="News XGBoost Confusion Matrix""/>
+</p>
 
 
 
