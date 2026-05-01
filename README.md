@@ -213,6 +213,11 @@ Recommended notebook order:
 4. Drop NaN rows from rolling features.
 5. Split 80/20 by time.
 
+### Handling missing, noisy, or inconsistent data
+
+- Date fields are coerced into a consistent datetime format, then rows are sorted by date to prevent ordering inconsistencies.
+- Rolling-window features naturally introduce missing values at the start of each series; these NaN rows are removed with `dropna()` before model training.
+
 ![Train/Test Split Timeline](data/images/train_test_split_timeline.png)
 
 
@@ -266,16 +271,36 @@ Recommended notebook order:
 ### What the modeling code does
 
 1. Loads ticker-specific train/test splits from `data/processed/`.
-2. Trains logistic regression and random forest classifiers using engineered features from the preprocessing pipeline.
+2. Trains three classifiers using engineered features from the preprocessing pipeline: Logistic Regression, Random Forest, and Gradient Boosting.
 3. Generates out-of-sample predictions on the test split for each ticker/model pair.
 4. Computes evaluation metrics (`accuracy`, `precision`, `recall`, `f1`, `roc_auc`, and predicted positive rate).
 5. Aggregates all model/ticker metrics into `results/metrics.csv` for downstream comparison plots and report tables.
 
+### Training procedure
+
+1. Use a chronological split (`train` first 80%, `test` last 20%) to avoid look-ahead bias.
+2. Fit each model (`Logistic Regression`, `Random Forest`, `Gradient Boosting`) on training features and labels only.
+3. Run inference on the held-out test set to simulate forward prediction.
+4. Compute and save comparable metrics for each ticker/model pair in `results/metrics.csv`.
+5. Generate comparison visualizations from the same metrics file so conclusions are reproducible.
+
+### Limitations and failure cases
+
+- Signal strength is modest (ROC-AUC values are only slightly above 0.5), so predictive power is limited.
+- Daily direction labels are noisy and sensitive to regime shifts; one period can underrepresent future market behavior.
+- Class imbalance can inflate accuracy for naive strategies, so threshold-dependent errors still occur.
+- Features are mostly price/volume based; missing macro/news breadth can cause underfitting in complex regimes.
+
 ### Code/files
 
-- `scripts/training/train_logistic.py`
-- `scripts/training/train_random_forest.py`
+- `scripts/training/train_logistic.py` - standalone Logistic Regression run (base features, SPY baseline visualization script).
+- `scripts/training/train_random_forest.py` - standalone Random Forest run (base features, SPY baseline script).
+- `scripts/training/generate_results_csv.py` - main comparison pipeline; trains/evaluates Logistic Regression, Random Forest, and Gradient Boosting across `SPY`, `QQQ`, and `IWM`, then writes `results/metrics.csv` and `results/feature_importance.csv`.
 - `results/metrics.csv`
+
+Notes on consistency:
+
+- Logistic Regression, Random Forest, Gradient Boosting settings are consistent across scripts.
 
 ### Output
 
@@ -293,12 +318,22 @@ Recommended notebook order:
 | ROC-AUC   | Ranking quality across classification thresholds |
 
 
+## Visualizations of Data
+
+### Code/files
+
+- `scripts/visualization/visualization_data.py`
+- `scripts/visualization/visualization_train.py`
+- `scripts/visualization/generate_all_model_visualizations.py` (generates the `data/images/all_models/...` figures shown in Figures 2-4)
+- `scripts/notebooks/process_news.ipynb` (produces the news-model confusion-matrix figure used in Figure 5)
+- `scripts/training/generate_results_csv.py` - main comparison pipeline; trains/evaluates Logistic Regression, Random Forest, and Gradient Boosting across `SPY`, `QQQ`, and `IWM`, then writes `results/metrics.csv` and `results/feature_importance.csv`.
+- `results/metrics.csv`
+
 ### Model comparison
 
-![All Metric Comparisons](data/images/results/all_metric_comparisons.png)
+No single model dominates every metric; Gradient Boosting and Logistic Regression provide stronger balance metrics, while baseline methods can still appear strong on raw accuracy.(source = `results/metrics.csv`)
 
-Caption: Side-by-side grouped bar charts for Accuracy, Precision, Recall, F1, and ROC-AUC across all ticker/model pairs from the latest regenerated `results/metrics.csv`.  
-Takeaway: No single model dominates every metric; Gradient Boosting and Logistic Regression provide stronger balance metrics, while baseline methods can still appear strong on raw accuracy.
+![All Metric Comparisons](data/images/results/all_metric_comparisons.png)
 
 Individual metric charts:
 
@@ -311,15 +346,6 @@ Individual metric charts:
 </p>
 
 These individual views are included for easier inspection of each evaluation criterion.
-
-
-
-## Visualizations of Data
-
-### Code/files
-
-- `scripts/visualization/visualization_data.py`
-- `scripts/visualization/visualization_train.py`
 
 ### Output
 
@@ -422,6 +448,15 @@ Yes. We successfully trained and compared multiple supervised models with reprod
 ### Future
 
 If we had more time, there are several promising directions to further improve predictability and model robustness. We could invest significant effort in searching for stronger predictive (alpha) features, such as experimenting with alternative technical indicators, incorporating macroeconomic or alternative data, or developing more nuanced features from market microstructure or text. Expanding our dataset, either via longer price histories or through additional relevant sources like sector indices or global markets, might help reduce overfitting and uncover deeper relationships. Improving model architecture or design—such as exploring advanced ensemble techniques, deep learning methods, or model stacking—could also help improve our ability to extract signal. Ultimately, while predicting the stock market remains challenging, systematically iterating on features, data diversity, and model choices could further increase predictability and outperformance over baseline, especially as more evidence and domain knowledge are incorporated.
+
+## Repository Organization
+
+- `scripts/` - data pipeline, modeling, and visualization scripts
+- `data/raw/` - source market data pulled from APIs
+- `data/processed/` - cleaned datasets and train/test splits
+- `results/` - metrics tables and summary outputs
+- `tests/` - automated test cases (`pytest`)
+- `.github/workflows/` - CI workflow configuration
 
 ## Team Contributions
 
