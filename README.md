@@ -18,7 +18,6 @@ YouTube link: [Project Presentation](https://youtu.be/02thZ96sEEA)
 - [Modeling](#modeling)
 - [Visualizations of Data](#visualizations-of-data-interactive-encouraged)
 - [Conclusion](#Conclusion)
-- [Limitations and Future Work](#limitations-and-future-work)
 - [Team Contributions](#team-contributions)
 
 ## Build and Run (Most Important)
