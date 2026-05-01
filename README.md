@@ -48,6 +48,12 @@ make reproduce
 - `scripts/training/train_logistic.py`
 - `scripts/training/train_random_forest.py`
 
+After `make reproduce` finishes, generated files are saved in:
+
+- Processed datasets: `data/processed/`
+- Model metrics/tables: `results/`
+- Plots and figures: `data/images/`
+
 The notebook-based news workflow is separate from `make reproduce`. To run it, launch Jupyter and open `scripts/notebooks/process_news.ipynb`.
 
 ## Testing and GitHub Workflow
