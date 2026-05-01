@@ -104,12 +104,12 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 
 ```mermaid
 flowchart TB
-  data["Data Collection"]
-    --> cleaning["Data Cleaning"]
-    --> features["Feature Engineering"]
-    --> models["Model Training"]
-    --> evaluation["Model Evaluation"]
-    --> results["Results & Visualization"]
+  data["Collect Data"]
+    --> cleaning["Clean Data"]
+    --> features["Engineer Features"]
+    --> models["Train Models"]
+    --> evaluation["Evaluate Models"]
+    --> results["Results and Visuals"]
 ```
 
 
@@ -350,7 +350,18 @@ Additional generated outputs for all tickers/models:
 </p>
 
 
-**Figure 4 - News XGBoost confusion matrix from `process_news.ipynb`**
+**Figure 4 - Additional SPY logistic diagnostics**
+
+These diagnostics complement confusion-matrix and ROC views by showing what drives predictions and how confidence/distribution patterns behave through time.
+
+<p align="center">
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_3_feature_importance.png" alt="SPY Logistic Feature Importance" height="500"/>
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_4_probability_distribution.png" alt="SPY Logistic Probability Distribution" height="500"/>
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_6_time_series_predictions.png" alt="SPY Logistic Time Series Predictions" height="500"/>
+  <img src="data/images/all_models/spy/logistic_regression/spy_logistic_regression_7_classification_report.png" alt="SPY Logistic Classification Report" height="500"/>
+</p>
+
+**Figure 5 - News XGBoost confusion matrix from `process_news.ipynb`**
 
 Caption: Confusion matrix for the multiclass XGBoost model trained on transformer embeddings generated from financial news text in `scripts/notebooks/process_news.ipynb`.  
 Takeaway: The model performs best in the middle sentiment bands, especially `Neutral` and `Somewhat-Bullish`, where the diagonal cells are strongest. Most errors occur between neighboring sentiment categories rather than between opposite extremes, which suggests the text embeddings capture general sentiment direction but still struggle to separate subtle intensity differences. A notable limitation is that the model makes almost no `Bearish` predictions, and many true `Bullish` or `Somewhat-Bearish` examples are pulled toward `Neutral` or `Somewhat-Bullish`. This pattern is consistent with class imbalance and semantic overlap in financial headlines: extreme labels are rarer, while moderate sentiment language is more common and harder to distinguish cleanly.
