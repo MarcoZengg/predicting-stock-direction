@@ -104,12 +104,18 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 
 ```mermaid
 flowchart TB
-  data["Collect"]
-    --> cleaning["Clean    "]
-    --> features["Features Enginee    r"]
-    --> models["Train    "]
-    --> evaluation["Evaluate    "]
-    --> results["Results    "]
+  data["Data Collection"]
+    --> cleaning["Data Cleaning"]
+    --> features["Feature Engineering"]
+    --> models["Model Training"]
+    --> evaluation["Model Evaluation"]
+    --> results["Results and Visualization"]
+  style data width:320px
+  style cleaning width:320px
+  style features width:320px
+  style models width:320px
+  style evaluation width:320px
+  style results width:320px
 ```
 
 
