@@ -263,6 +263,14 @@ Recommended notebook order:
 
 ## Modeling
 
+### What the modeling code does
+
+1. Loads ticker-specific train/test splits from `data/processed/`.
+2. Trains logistic regression and random forest classifiers using engineered features from the preprocessing pipeline.
+3. Generates out-of-sample predictions on the test split for each ticker/model pair.
+4. Computes evaluation metrics (`accuracy`, `precision`, `recall`, `f1`, `roc_auc`, and predicted positive rate).
+5. Aggregates all model/ticker metrics into `results/metrics.csv` for downstream comparison plots and report tables.
+
 ### Code/files
 
 - `scripts/training/train_logistic.py`
