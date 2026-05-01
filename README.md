@@ -6,6 +6,8 @@ Course: [BU CS 506 Final Project](https://gallettilance.github.io/final_project/
 
 YouTube link: [Project Presentation](https://youtu.be/02thZ96sEEA)
 
+[![Watch the project presentation](https://img.youtube.com/vi/02thZ96sEEA/hqdefault.jpg)](https://youtu.be/02thZ96sEEA)
+
 ## Quick Navigation
 
 - [Build and Run](#build-and-run-most-important)
