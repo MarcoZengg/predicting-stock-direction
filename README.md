@@ -104,15 +104,14 @@ Predicting exact next-day prices is typically too noisy for small academic proje
 <div align="center">
 
 ```mermaid
-flowchart LR
-  data["<b>Data Collection</b>"]
-    --> cleaning["<b>Data Cleaning</b>"]
-    --> features["<b>Feature Engineering</b>"]
-    --> models["<b>Model Training</b>"]
-    --> evaluation["<b>Model Evaluation</b>"]
-    --> results["<b>Results & Visualization</b>"]
+flowchart TB
+  data["Data Collection"]
+    --> cleaning["Data Cleaning"]
+    --> features["Feature Engineering"]
+    --> models["Model Training"]
+    --> evaluation["Model Evaluation"]
+    --> results["Results & Visualization"]
 ```
-
 </div>
 
 
