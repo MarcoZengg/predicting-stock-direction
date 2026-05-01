@@ -17,7 +17,7 @@ YouTube link: [Project Presentation](https://youtu.be/02thZ96sEEA)
 - [News Processing Notebook](#news-processing-notebook)
 - [Data Cleaning](#data-cleaning)
 - [Feature Extraction](#feature-extraction)
-- [Modeling](#modeling)
+- [Modeling & Evaluation](#modeling--evaluation)
 - [Visualizations of Data](#visualizations-of-data-interactive-encouraged)
 - [Conclusion](#Conclusion)
 - [Team Contributions](#team-contributions)
@@ -266,7 +266,7 @@ Recommended notebook order:
 - The mixed signs and modest magnitudes in linear-model coefficients support the project’s core finding: predictive signal exists but is weak, so performance depends on combining many small effects rather than one dominant feature.
 
 
-## Modeling
+## Modeling & Evaluation
 
 ### What the modeling code does
 
